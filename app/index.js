@@ -16,9 +16,12 @@ class App extends React.Component {
             <div id="container">
                 <h2 id="header">#todo</h2>
                 <AddTodo onAddTodo={(newTodo) => this.onAddTodo(newTodo)} />
-                <ul>
+                <ul id="todoList">
                     {this.state.todos.map((todo) => (
-                        <li>{todo.text}</li>
+                        <div id="todo" key={todo.id}>
+                            <input type="checkbox" id={`todo_input${todo.id}`}/>
+                            <label htmlFor={`todo_input${todo.id}`}>{todo.text}</label>
+                        </div>
                     ))}
                 </ul>
             </div>

@@ -7,22 +7,24 @@ export default class AddTodo extends React.Component {
         super(props);
 
         this.nextId = 1;
-        this.state = {text: ""};
+        this.state = { text: "" };
 
         this.onAddTodo = this.onAddTodo.bind(this);
         this.onChange = this.onChange.bind(this);
+        this.onKeyDown = this.onKeyDown.bind(this);
     }
 
     render() {
         return (
             <div className="addTodo">
-                <input type="text" 
-                    id="addTodo_Input" 
-                    name="todo" 
-                    placeholder="add details" 
-                    onChange={this.onChange} 
-                    value={this.state.text}/>
-                <button id="addTodo_Button" 
+                <input type="text"
+                    id="addTodo_Input"
+                    name="todo"
+                    placeholder="add details"
+                    onChange={this.onChange}
+                    value={this.state.text}
+                    onKeyDown={this.onKeyDown} />
+                <button id="addTodo_Button"
                     onClick={() => this.onAddTodo()}>Add</button>
             </div>
         )
@@ -43,5 +45,11 @@ export default class AddTodo extends React.Component {
         this.setState({
             text
         });
+    }
+
+    onKeyDown(event) {
+        if (event.key === 'Enter') {
+            this.onAddTodo();
+        }
     }
 }
