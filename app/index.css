@@ -103,3 +103,34 @@ input[type="checkbox"]:checked + label::before {
 input[type="checkbox"]:focus + label::before {
     box-shadow: 0 0 5px #828282;
 }
+
+
+.states-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.state_button {
+    flex: 1;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #BDBDBD;
+    margin-top: 3em;
+    margin-bottom: 2em;
+    padding: 1em 1em 0.1em 1em;
+    font-weight: 600;
+}
+
+.state-square {
+    height: 10%;
+    background: #2F80ED;
+    width: 50%;
+    border-radius: 4px 4px 0px 0px;
+    margin: auto;   /* Center the square */
+    margin-top: 1rem;
+    visibility: hidden;
+}
+
+.state-square.selected {
+    visibility: visible;
+}

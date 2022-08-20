@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDom from "react-dom";
 import AddTodo from "./components/addTodo";
+import SelectedState from "./components/selectedState";
 import './index.css';
 
 class App extends React.Component {
@@ -15,6 +16,7 @@ class App extends React.Component {
         return (
             <div id="container">
                 <h2 id="header">#todo</h2>
+                <SelectedState />
                 <AddTodo onAddTodo={(newTodo) => this.onAddTodo(newTodo)} />
                 <ul id="todoList">
                     {this.state.todos.map((todo) => (
