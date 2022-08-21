@@ -7,14 +7,20 @@ export class TodoItem extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            completed: this.props.todo.state === TodoState.Completed
+            completed: this.props.todo.state === TodoState.Completed,
+            deleted: this.props.todo.state === TodoState.Deleted
         }
 
         this.onSelectTodo = this.onSelectTodo.bind(this);
+        this.onDeleteTodo = this.onDeleteTodo.bind(this);
     }
 
     render() {
         const { todo, selected } = this.props;
+
+        if(this.state.deleted) {
+            return null;
+        }
         return (
             <div className="todo">
                 <div>
@@ -27,7 +33,7 @@ export class TodoItem extends React.Component {
                     />
                     <label htmlFor={`todo_input${todo.id}`}>{todo.text}</label>
                 </div>
-                {selected === States.Completed && <FaTrash className="trash"/>}
+                {selected === States.Completed && <FaTrash className="trash" onClick={() => this.onDeleteTodo(todo)}/>}
             </div>
         )
     }
@@ -37,6 +43,14 @@ export class TodoItem extends React.Component {
         todo.state = event.target.checked ? TodoState.Completed : TodoState.Active;
         this.setState({
             completed: event.target.checked
+        })
+    }
+
+    /* Delete a todo item */
+    onDeleteTodo(todo) {
+        todo.state = TodoState.Deleted;
+        this.setState({
+            deleted: true
         })
     }
 }
