@@ -73,6 +73,7 @@ https://www.youtube.com/watch?v=YyLzwR-iXtI&ab_channel=WebDevSimplified   */
 .todo {
     display: flex;
     padding-top: 30px;
+    justify-content: space-between;
 }
 
 /* hiding the native checkbox input */
@@ -104,7 +105,7 @@ input[type="checkbox"]:focus + label::before {
     box-shadow: 0 0 5px #828282;
 }
 
-
+/* Style the toggle States selections (All, Active, and Completed)*/
 .states-container {
     display: flex;
     justify-content: space-between;
@@ -133,4 +134,10 @@ input[type="checkbox"]:focus + label::before {
 
 .state-square.selected {
     visibility: visible;
+}
+
+/* Style trash icon */
+.trash {
+    font-size: 18px;
+    color: #BDBDBD;
 }

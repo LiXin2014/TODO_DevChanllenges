@@ -29,7 +29,7 @@ class App extends React.Component {
                 <AddTodo onAddTodo={(newTodo) => this.onAddTodo(newTodo)} />
                 <ul id="todoList">
                     {todos.map((todo) => (
-                        <TodoItem todo={todo} key={todo.id} />
+                        <TodoItem todo={todo} key={todo.id} selected={this.state.selectedState} />
                     ))}
                 </ul>
             </div>
