@@ -47,6 +47,7 @@ export default class AddTodo extends React.Component {
         });
     }
 
+    /* Handles the keydown event on input */
     onKeyDown(event) {
         if (event.key === 'Enter') {
             this.onAddTodo();

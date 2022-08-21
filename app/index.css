@@ -70,7 +70,7 @@ https://www.youtube.com/watch?v=YyLzwR-iXtI&ab_channel=WebDevSimplified   */
     display: flex;
 }
 
-#todo {
+.todo {
     display: flex;
     padding-top: 30px;
 }
