@@ -3,6 +3,8 @@ import ReactDom from "react-dom";
 import AddTodo from "./components/addTodo";
 import SelectedState, { States } from "./components/selectedState";
 import { TodoItem } from "./components/todoItem";
+import { FaTrash } from "react-icons/fa";
+import { TodoState } from "./components/todoState";
 import './index.css';
 
 class App extends React.Component {
@@ -14,6 +16,7 @@ class App extends React.Component {
         };
 
         this.onAddTodo = this.onAddTodo.bind(this);
+        this.onDeleteAllCompletedTodos = this.onDeleteAllCompletedTodos.bind(this);
     }
 
     render() {
@@ -32,6 +35,12 @@ class App extends React.Component {
                         <TodoItem todo={todo} key={todo.id} selected={this.state.selectedState} />
                     ))}
                 </ul>
+                {this.state.selectedState === States.Completed && todos.some(todo => todo.state === TodoState.Completed) &&
+                    <button id="deleteAll" onClick={this.onDeleteAllCompletedTodos}>
+                        <div id="deleteButtonContent">
+                            <FaTrash/> delete all
+                        </div>
+                    </button>}
             </div>
         )
     }
@@ -52,6 +61,21 @@ class App extends React.Component {
         this.setState({
             selectedState
         })
+    }
+
+    /* Delete all completed todos */
+    onDeleteAllCompletedTodos() {
+        const todos = this.state.todos.map(todo => {
+            if(todo.state === TodoState.Completed) {
+                todo.state = TodoState.Deleted;
+            }
+            return todo;
+        });
+
+        this.setState(
+            { todos }
+        );
+        
     }
 }
 

@@ -141,3 +141,28 @@ input[type="checkbox"]:focus + label::before {
     font-size: 18px;
     color: #BDBDBD;
 }
+
+/* Style delete all button */
+#deleteAll {
+    background: #EB5757;
+    border-radius: 4px;
+    color: white;
+    border: none;
+    padding: 1em 2em;
+
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+
+    /* place button at the right */
+    display: block;
+    margin-right: 0px;
+    margin-left: auto;
+    margin-top: 3em;
+}
+
+#deleteButtonContent {
+    display: flex;
+    align-items: center;
+    gap: 0.2em;
+}
