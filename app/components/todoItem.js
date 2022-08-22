@@ -21,6 +21,7 @@ export class TodoItem extends React.Component {
         if(this.state.deleted) {
             return null;
         }
+        
         return (
             <div className="todo">
                 <div>

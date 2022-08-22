@@ -35,7 +35,7 @@ class App extends React.Component {
                         <TodoItem todo={todo} key={todo.id} selected={this.state.selectedState} />
                     ))}
                 </ul>
-                {this.state.selectedState === States.Completed && todos.some(todo => todo.state === TodoState.Completed) &&
+                {this.state.selectedState === States.Completed &&
                     <button id="deleteAll" onClick={this.onDeleteAllCompletedTodos}>
                         <div id="deleteButtonContent">
                             <FaTrash/> delete all
