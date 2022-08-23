@@ -9,12 +9,16 @@ body {
     font-family: 'Montserrat', sans-serif;
     font-weight: 600;
     font-size: 14px;
+    height: 100vh;
+}
+
+.page_container {
+    height: 100%;
 }
 
 #app {
     max-width: 1000px;
     margin: 0 auto;
-    height: 100%;
 }
 
 #container {
@@ -165,4 +169,24 @@ input[type="checkbox"]:focus + label::before {
     display: flex;
     align-items: center;
     gap: 0.2em;
+}
+
+/* style for footer */
+footer {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    color: #BDBDBD;
+    position: fixed;
+    bottom: 20px;
+    width: 100%;
+}
+
+footer .created-by {
+    margin: 0 auto;
+    width: fit-content;
+}
+
+footer .author {
+    font-weight: bold;
+    color: #BDBDBD;
 }
