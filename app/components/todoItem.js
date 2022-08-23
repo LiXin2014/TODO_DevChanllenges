@@ -2,6 +2,7 @@ import React from "react";
 import { TodoState } from "./todoState";
 import { FaTrash } from "react-icons/fa";
 import { States } from "./selectedState";
+import ls from 'local-storage';
 
 export class TodoItem extends React.Component {
     constructor(props) {
@@ -21,7 +22,7 @@ export class TodoItem extends React.Component {
         if(this.state.deleted) {
             return null;
         }
-        
+
         return (
             <div className="todo">
                 <div>
@@ -44,7 +45,11 @@ export class TodoItem extends React.Component {
         todo.state = event.target.checked ? TodoState.Completed : TodoState.Active;
         this.setState({
             completed: event.target.checked
-        })
+        });
+
+        const persistTodos = ls.get('todos');
+        persistTodos.find(element => element.id === todo.id).state = event.target.checked ? TodoState.Completed : TodoState.Active;
+        ls.set('todos', persistTodos);
     }
 
     /* Delete a todo item */
@@ -52,6 +57,10 @@ export class TodoItem extends React.Component {
         todo.state = TodoState.Deleted;
         this.setState({
             deleted: true
-        })
+        });
+
+        const persistTodos = ls.get('todos');
+        persistTodos.find(element => element.id === todo.id).state = TodoState.Deleted;
+        ls.set('todos', persistTodos);
     }
 }

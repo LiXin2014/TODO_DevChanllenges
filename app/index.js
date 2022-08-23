@@ -5,6 +5,7 @@ import SelectedState, { States } from "./components/selectedState";
 import { TodoItem } from "./components/todoItem";
 import { FaTrash } from "react-icons/fa";
 import { TodoState } from "./components/todoState";
+import ls from 'local-storage';
 import './index.css';
 
 class App extends React.Component {
@@ -19,17 +20,25 @@ class App extends React.Component {
         this.onDeleteAllCompletedTodos = this.onDeleteAllCompletedTodos.bind(this);
     }
 
+    componentDidMount() {
+        const persistTodos = ls.get('todos');
+        this.setState({
+            todos: persistTodos || []
+        });
+    }
+
     render() {
         let todos = this.state.todos;
+        let nextId = todos.length + 1;
         if (this.state.selectedState !== States.All) {
             todos = todos.filter(todo => todo.state === this.state.selectedState);
         }
-
+        
         return (
             <div id="container">
                 <h2 id="header">#todo</h2>
                 <SelectedState onChangeSelectedState={(newSelectedState) => this.onChangeSelectedState(newSelectedState)} selected={this.state.selectedState} />
-                <AddTodo onAddTodo={(newTodo) => this.onAddTodo(newTodo)} />
+                <AddTodo onAddTodo={(newTodo) => this.onAddTodo(newTodo)} nextId={nextId}/>
                 <ul id="todoList">
                     {todos.map((todo) => (
                         <TodoItem todo={todo} key={todo.id} selected={this.state.selectedState} />
@@ -50,6 +59,7 @@ class App extends React.Component {
         this.setState((state) => {
             let todos = state.todos;
             todos.push(newTodo);
+            ls.set('todos', todos);
             return {
                 todos
             }
@@ -76,6 +86,7 @@ class App extends React.Component {
             { todos }
         );
         
+        ls.set('todos', todos);
     }
 }
 

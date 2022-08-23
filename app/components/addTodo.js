@@ -6,9 +6,7 @@ export default class AddTodo extends React.Component {
     constructor(props) {
         super(props);
 
-        this.nextId = 1;
         this.state = { text: "" };
-
         this.onAddTodo = this.onAddTodo.bind(this);
         this.onChange = this.onChange.bind(this);
         this.onKeyDown = this.onKeyDown.bind(this);
@@ -32,7 +30,7 @@ export default class AddTodo extends React.Component {
 
     /* Handles the click event on Add button */
     onAddTodo() {
-        let newTodo = new Todo(this.nextId++, this.state.text, TodoState.Active);
+        let newTodo = new Todo(this.props.nextId, this.state.text, TodoState.Active);
         this.props.onAddTodo(newTodo);
         this.setState({
             text: ""
