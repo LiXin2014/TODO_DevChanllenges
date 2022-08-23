@@ -4,7 +4,8 @@
   "description": "<!-- Please update value in the {}  -->",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "build": "set NODE_ENV=production&&webpack"
   },
   "babel": {
     "presets": [
